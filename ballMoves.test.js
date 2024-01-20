@@ -1,23 +1,10 @@
 import { describe, it, expect } from 'vitest'
 import ballMoves from './ballMoves';
 
-// buckets and balls
-
-// .b 0
-// b.b 3/1 0
-
-// b.b. 4/2 0
-
-// b.b.b 5/3 0
-
-// bb.b..
-// bbb..
-// b..bb..
-
-
 describe('ballMoves', () => {
   it ('should handle cases where no moves required', () => {
     expect(ballMoves('.b')).toEqual(0);
+    expect(ballMoves('b.')).toEqual(0);
     expect(ballMoves('.b...')).toEqual(0);
     expect(ballMoves('b.b.')).toEqual(0);
     expect(ballMoves('b.b..')).toEqual(0);

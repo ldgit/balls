@@ -1,34 +1,14 @@
-
-// If number of buckets is greater than number of balls * 2 - 1, then find largest cluster 2 space 
-// separated balls, count them, all other balls need to be moved.
-
-// If number of buckets is equal to number of balls * 2 - 1, then all balls on even indexes need to be 
-// moved.
-
-// If number of buckets is less than number of balls * 2 - 1, then task is impossible 
-
+// To find the minimum number of moves take a complete cluster of 2 space 
+// separated balls, move it through the bucket list and find the best match. 
+// Then all balls that are not in that best match need to be moved.
 
 export default function ballMoves(bucketsAndBallsString) {
   const noOfBalls = bucketsAndBallsString.match(/b/g).length;
   const noOfBuckets = bucketsAndBallsString.length;
-
-  if (noOfBalls === 1) {
-    return 0;
-  }
-
+    
+  // If number of buckets is less than number of balls * 2 - 1, then task is impossible 
   if (noOfBuckets < (noOfBalls * 2) - 1){
     return -1;
-  }
-
-  if (noOfBuckets === (noOfBalls * 2) - 1){
-    let noOfBallsOnOddIndexes = 0;
-    for (let index = 1; index < bucketsAndBallsString.length; index += 2) {
-      if (bucketsAndBallsString[index] === 'b') {
-        noOfBallsOnOddIndexes += 1;
-      }
-    }
-
-    return noOfBallsOnOddIndexes;
   }
 
   let highestNoOfCorrectlySpacedBalls = 0;
